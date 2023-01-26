@@ -1,6 +1,7 @@
 <template>
   <div class="row">
     <div class="col-12 col-md-8 m-auto">
+      <LoadingComponent v-if="isLoading" />
       <CardComponent class="mt-5" title="Acesso a la tienda">
         <AlertMessage v-if="message">{{ message }}</AlertMessage>
         <form @submit.prevent="onSubmit">
@@ -72,6 +73,7 @@
 import { defineComponent } from "vue";
 import AlertMessage from "./AlertMessage.vue";
 import CardComponent from "./CardComponent.vue";
+import LoadingComponent from "./LoadingComponent.vue";
 import useVuelidate from "@vuelidate/core";
 import { required, email, minLength } from "@vuelidate/validators";
 import store from "@/store";
@@ -79,13 +81,14 @@ import router from "@/router";
 
 export default defineComponent({
   name: "LoginForm",
-  components: { AlertMessage, CardComponent },
+  components: { AlertMessage, CardComponent, LoadingComponent },
   setup() {
     return { v$: useVuelidate() };
   },
   data() {
     return {
       message: "",
+      isLoading: false,
       form: {
         email: "",
         password: "",
@@ -109,6 +112,8 @@ export default defineComponent({
   methods: {
     onSubmit() {
       this.message = "";
+      this.isLoading = true;
+
       store
         .dispatch("login", this.form)
         .then(() => {
@@ -116,7 +121,8 @@ export default defineComponent({
         })
         .catch(() => {
           this.message = "Correo electrónico o contraseña no válidos.";
-        });
+        })
+        .finally(() => (this.isLoading = false));
     },
   },
 });
