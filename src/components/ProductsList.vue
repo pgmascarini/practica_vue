@@ -54,11 +54,11 @@ export default defineComponent({
   },
   computed: {
     filteredList(): Product[] {
-      if (this.filterParam.length >= 3) {
+      if (this.filterParam.length) {
         return this.productsList.filter((product: Product) => {
           return product.title
             .toLocaleLowerCase()
-            .startsWith(this.filterParam.toLocaleLowerCase());
+            .includes(this.filterParam.toLocaleLowerCase());
         });
       }
 
