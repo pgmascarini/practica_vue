@@ -1,12 +1,14 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import LoginView from "../views/LoginView.vue";
 import authGuard from "./auth-guard";
+import loggedGuard from "./logged-guard";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "login",
     component: LoginView,
+    beforeEnter: [loggedGuard],
   },
   {
     path: "/products",
