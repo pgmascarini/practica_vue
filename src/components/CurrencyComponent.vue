@@ -1,17 +1,14 @@
 <template>
-  <div class="login">
-    <LoginForm />
-  </div>
+  <b>${{ Number(value).toFixed(2) }}</b>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import LoginForm from "@/components/LoginForm.vue";
 
 export default defineComponent({
-  name: "AppComponent",
-  components: {
-    LoginForm,
+  name: "CurrencyComponent",
+  props: {
+    value: Number,
   },
 });
 </script>

@@ -28,6 +28,10 @@ export default createStore({
 
       commit("auth", response.access_token);
     },
+    async fetchProducts() {
+      const response = (await this.state.axiosApi.get("/products")).data;
+      return response;
+    },
   },
   modules: {},
 });

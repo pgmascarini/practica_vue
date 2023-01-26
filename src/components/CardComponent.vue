@@ -3,7 +3,7 @@
     <img
       v-if="imgUrl"
       :src="imgUrl"
-      :alt="imgDescription"
+      :alt="imgDescription || title"
       class="card-img-top"
     />
     <h5 v-if="title" class="card-header">{{ title }}</h5>
@@ -26,4 +26,8 @@ export default defineComponent({
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+img {
+  max-height: 170px;
+}
+</style>
