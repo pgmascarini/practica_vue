@@ -62,7 +62,7 @@
               class="btn btn-secondary mt-5"
               style="float: right"
             >
-              Login
+              Acceder
             </button>
           </form>
         </CardComponent>

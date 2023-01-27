@@ -90,10 +90,24 @@ export default defineComponent({
 });
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-.link {
-  color: inherit;
-  text-decoration: none;
+<!-- global -->
+<style lang="scss">
+.products {
+  position: relative;
+
+  .link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .currency {
+    bottom: 0.3rem;
+    position: absolute;
+    right: 0.3rem;
+  }
+
+  .images {
+    height: 150px;
+  }
 }
 </style>

@@ -4,15 +4,9 @@
     <div class="row" v-if="!isLoading">
       <div class="col-12 col-sm-8 col-lg-6 m-auto mt-3">
         <AlertMessage v-if="message">{{ message }}</AlertMessage>
-        <CardComponent
-          v-if="user"
-          :title="user.name"
-          :imgUrl="user.avatar"
-          :imgDescription="user.name"
-          class="text-center"
-        >
-          <p>{{ user.email }}</p>
-          <p>Rol: {{ user.role }}</p>
+        <CardComponent v-if="user" :title="user.name" :images="[user.avatar]">
+          <p class="text-center">{{ user.email }}</p>
+          <p class="text-center">Rol: {{ user.role }}</p>
         </CardComponent>
       </div>
     </div>
@@ -69,5 +63,11 @@ export default defineComponent({
 });
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss"></style>
+<!-- global -->
+<style lang="scss">
+.profile {
+  .card-body {
+    padding: 0;
+  }
+}
+</style>

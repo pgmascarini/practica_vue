@@ -2,10 +2,17 @@
   <div class="product">
     <LoadingComponent v-if="isLoading" />
     <div class="row" v-if="!isLoading">
-      <div class="col-12 col-sm-8 col-lg-6 m-auto mt-3">
+      <div class="col-12 mt-3">
         <AlertMessage v-if="message">{{ message }}</AlertMessage>
-        <ProductItem v-if="product" :product="product"></ProductItem>
-        <router-link class="btn btn-secondary" :to="`/products`"
+        <ProductItem
+          v-if="product"
+          :product="product"
+          :carousel="true"
+        ></ProductItem>
+        <router-link
+          class="btn btn-secondary mt-4"
+          style="float: right"
+          :to="`/products`"
           >Volver</router-link
         >
       </div>
@@ -53,7 +60,7 @@ export default defineComponent({
       const route = useRoute();
       store
         .dispatch("fetchProductById", route.params.id)
-        .then((product) => {
+        .then((product: Product) => {
           this.product = product;
         })
         .catch(() => {
@@ -65,14 +72,14 @@ export default defineComponent({
 });
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
+<!-- global -->
+<style lang="scss">
 .product {
   position: relative;
 
-  .btn {
+  .currency {
+    bottom: 1rem;
     position: absolute;
-    top: 1rem;
     right: 1rem;
   }
 }

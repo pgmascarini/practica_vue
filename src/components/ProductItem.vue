@@ -1,13 +1,15 @@
 <template>
-  <CardComponent
-    v-if="product"
-    :title="product.title"
-    :imgDescription="product.title"
-    :imgUrl="product.images[0]"
-  >
-    <p>{{ product.description }}</p>
-    <CurrencyComponent :value="product.price" style="float: right" />
-  </CardComponent>
+  <div class="product-item">
+    <CardComponent
+      v-if="product"
+      :title="product.title"
+      :images="carousel ? product.images : [product.images[0]]"
+      :side="true"
+    >
+      <p class="description m-0">{{ product.description }}</p>
+      <CurrencyComponent :value="product.price" style="float: right" />
+    </CardComponent>
+  </div>
 </template>
 
 <script lang="ts">
@@ -21,6 +23,7 @@ import { Product } from "../models/product";
 export default defineComponent({
   props: {
     product: Object as PropType<Product>,
+    carousel: Boolean,
   },
   name: "ProductItem",
   components: {
@@ -30,5 +33,11 @@ export default defineComponent({
 });
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss"></style>
+<!-- global -->
+<style lang="scss">
+.product-item {
+  .card-body {
+    padding: 0;
+  }
+}
+</style>

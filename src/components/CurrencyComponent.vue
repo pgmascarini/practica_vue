@@ -1,5 +1,5 @@
 <template>
-  <b>${{ Number(value).toFixed(2) }}</b>
+  <b class="currency">${{ Number(value).toFixed(2) }}</b>
 </template>
 
 <script lang="ts">
