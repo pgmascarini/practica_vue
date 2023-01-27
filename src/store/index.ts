@@ -7,27 +7,28 @@ export default createStore({
   },
   getters: {},
   mutations: {
-    auth(state, token) {
+    auth(state, token): void {
       state.token = token;
       localStorage.setItem("token", token);
     },
-    logout(state) {
+    logout(state): void {
       state.token = "";
       localStorage.removeItem("token");
     },
   },
   actions: {
-    async login({ commit }, payload) {
+    async login({ commit }, payload): Promise<void> {
       const response = (await fakeShopApi.post("/auth/login", payload)).data;
       commit("auth", response.access_token);
     },
-    async fetchLoggedUser() {
+    async fetchLoggedUser(): Promise<void> {
       return (await fakeShopApi.get("/auth/profile")).data;
     },
-    async fetchProducts() {
+    async fetchProducts(): Promise<void> {
       return (await fakeShopApi.get("/products")).data;
     },
-    async fetchProductById({ commit }, id) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    async fetchProductById({ commit }, id): Promise<void> {
       return (await fakeShopApi.get(`/products/${id}`)).data;
     },
   },

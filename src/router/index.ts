@@ -53,4 +53,5 @@ const router = createRouter({
   routes,
   linkActiveClass: "active",
 });
+
 export default router;

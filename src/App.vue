@@ -48,6 +48,7 @@
     </div>
   </nav>
   <div class="container-lg">
+    <hr />
     <router-view />
   </div>
 </template>
