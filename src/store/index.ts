@@ -27,6 +27,9 @@ export default createStore({
     async fetchProducts() {
       return (await fakeShopApi.get("/products")).data;
     },
+    async fetchProductById({ commit }, id) {
+      return (await fakeShopApi.get(`/products/${id}`)).data;
+    },
   },
   modules: {},
 });

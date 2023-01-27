@@ -14,7 +14,9 @@
   <div v-if="filteredList.length > 0" class="row">
     <template v-for="product in filteredList" :key="product.id">
       <div class="col-12 col-sm-6 col-lg-4 mb-2">
-        <ProductItem :product="product" />
+        <router-link class="link" :to="`/product/${product.id}`">
+          <ProductItem :product="product" />
+        </router-link>
       </div>
     </template>
   </div>
@@ -72,4 +74,9 @@ export default defineComponent({
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+</style>

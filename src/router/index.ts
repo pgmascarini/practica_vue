@@ -21,6 +21,16 @@ const routes: Array<RouteRecordRaw> = [
       import(/* webpackChunkName: "products" */ "../views/ProductsView.vue"),
   },
   {
+    path: "/product/:id",
+    name: "product",
+    beforeEnter: [authGuard],
+    // route level code-splitting
+    // this generates a separate chunk (products.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "products" */ "../views/ProductView.vue"),
+  },
+  {
     path: "/profile",
     name: "profile",
     beforeEnter: [authGuard],

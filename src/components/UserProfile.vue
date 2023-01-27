@@ -1,8 +1,8 @@
 <template>
   <LoadingComponent v-if="isLoading" />
-  <hr v-if="!isLoading" />
   <div class="row">
-    <div class="col-12 col-sm-8 col-lg-6 m-auto">
+    <hr />
+    <div class="col-12 col-sm-8 col-lg-6 m-auto mt-3">
       <AlertMessage v-if="message">{{ message }}</AlertMessage>
       <CardComponent
         v-if="!isLoading && !message && user.name"
