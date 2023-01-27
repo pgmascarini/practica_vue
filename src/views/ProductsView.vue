@@ -9,7 +9,7 @@ import { defineComponent } from "vue";
 import ProductsList from "@/components/ProductsList.vue";
 
 export default defineComponent({
-  name: "AppComponent",
+  name: "ProductsView",
   components: {
     ProductsList,
   },
